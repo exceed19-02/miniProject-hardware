@@ -116,6 +116,7 @@ void main_task(void *param){//will run in paralelled
             }
             else {
                 digitalWrite(LIGHT3,LOW);
+            }
         }
         if(mode3=="disco"){
 
