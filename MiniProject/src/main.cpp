@@ -29,8 +29,8 @@ int light_id1, light_id2, light_id3;
 bool status1, status2, status3;
 String mode1, mode2, mode3;
 int brightness1, brightness2, brightness3;
-
-void GET_Data(int light_id){
+TaskHandle_t getdata=NULL;
+void GET_Data(void *param){
     while(1){
         DynamicJsonDocument doc(2048);
         HTTPClient http;
@@ -71,6 +71,7 @@ void GET_Data(int light_id){
         }
 
         Serial.println("----------------------------------");
+        vTaskDelay(10/portTICK_PERIOD_MS);
     }
 }
 
@@ -122,6 +123,8 @@ void main_task(void *param){//will run in paralelled
         }
     }
 }
+}
+
 
 
 void setup() {
@@ -131,6 +134,7 @@ void setup() {
     pinMode(LIGHT3,OUTPUT);
     Connect_Wifi("OPPO_KUY","oppopass");
     xTaskCreatePinnedToCore(main_task, "main_task", 10000, NULL, 1, NULL, 0);
+    xTaskCreatePinnedToCore(GET_Data, "get_data", 10000, NULL, 1, &getdata, 0);
     touchAttachInterrupt(T0, click1, threshold);
     touchAttachInterrupt(T1, click2, threshold);
     touchAttachInterrupt(T2, click3, threshold);
