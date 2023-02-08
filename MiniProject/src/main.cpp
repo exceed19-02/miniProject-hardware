@@ -124,7 +124,6 @@ void main_task(void *param){//will run in paralelled
         }
     }
 }
-}
 
 
 
