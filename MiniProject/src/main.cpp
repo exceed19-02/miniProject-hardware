@@ -3,7 +3,7 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include <WiFi.h>
-
+#define LDR 34
 #define LIGHT1 26
 #define LIGHT2 25
 #define LIGHT3 33
@@ -78,10 +78,31 @@ void GET_Data(int light_id){
 
 void main_task(void *param){//will run in paralelled
     while(1){
+        int ldr = map(analogRead(LDR),3500,4095,0,255);
+        if (ldr<0){
+            ldr = 0;
+        }
         //manual never run in here,disregard switch
         //ROOM1 , LIGHT1
         if(mode1=="auto"){
+            if (ldr < 10){
+                digitalWrite(LIGHT1, HIGH);
+            }
+            else {
+                digitalWrite(LIGHT1,LOW);
             
+            if (ldr < 10){
+                digitalWrite(LIGHT2, HIGH);
+            }
+            else {
+                digitalWrite(LIGHT2,LOW);
+
+            if (ldr < 10){
+                digitalWrite(LIGHT3, HIGH);
+            }
+            else {
+                digitalWrite(LIGHT3,LOW);
+
         }
         if(mode1=="disco"){
 
