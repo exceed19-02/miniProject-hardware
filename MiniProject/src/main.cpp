@@ -90,19 +90,7 @@ void main_task(void *param){//will run in paralelled
             }
             else {
                 digitalWrite(LIGHT1,LOW);
-            
-            if (ldr < 10){
-                digitalWrite(LIGHT2, HIGH);
             }
-            else {
-                digitalWrite(LIGHT2,LOW);
-
-            if (ldr < 10){
-                digitalWrite(LIGHT3, HIGH);
-            }
-            else {
-                digitalWrite(LIGHT3,LOW);
-
         }
         if(mode1=="disco"){
 
@@ -110,7 +98,12 @@ void main_task(void *param){//will run in paralelled
 
         //ROOM2 , LIGHT2
         if(mode2=="auto"){
-
+            if (ldr < 10){
+                digitalWrite(LIGHT2, HIGH);
+            }
+            else {
+                digitalWrite(LIGHT2,LOW);
+            }
         }
         if(mode2=="disco"){
 
@@ -118,7 +111,11 @@ void main_task(void *param){//will run in paralelled
 
         //ROOM3 , LIGHT3
         if(mode3=="auto"){
-
+            if (ldr < 10){
+                digitalWrite(LIGHT3, HIGH);
+            }
+            else {
+                digitalWrite(LIGHT3,LOW);
         }
         if(mode3=="disco"){
 
