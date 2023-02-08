@@ -88,8 +88,20 @@ void main_task(void *param){//will run in paralelled
         }
 
         //ROOM2 , LIGHT2
+        if(mode2=="auto"){
+
+        }
+        if(mode2=="disco"){
+
+        }
 
         //ROOM3 , LIGHT3
+        if(mode3=="auto"){
+
+        }
+        if(mode3=="disco"){
+
+        }
     }
 }
 
@@ -125,8 +137,8 @@ void click1() {
             digitalWrite(LIGHT1,LOW);
         }else if (digitalRead(LIGHT1) == 0){
             digitalWrite(LIGHT1,HIGH);
-    }
-    Serial.println("click!");
+        }
+        Serial.println("click1!");
     }
 }
 
@@ -136,8 +148,8 @@ void click2() {
             digitalWrite(LIGHT2,LOW);
         }else if (digitalRead(LIGHT2) == 0){
             digitalWrite(LIGHT2,HIGH);
-    }
-    Serial.println("click!");
+        }
+        Serial.println("click2!");
     }
     
 }
@@ -148,7 +160,7 @@ void click3() {
             digitalWrite(LIGHT3,LOW);
         }else if (digitalRead(LIGHT3) == 0){
             digitalWrite(LIGHT3,HIGH);
-    }
-    Serial.println("click!");
+        }
+        Serial.println("click3!");
     }
 }
