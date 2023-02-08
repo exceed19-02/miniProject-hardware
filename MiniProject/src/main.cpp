@@ -55,16 +55,35 @@ void loop() {
 }
 
 void click1() {
-    if (mode1 == "MANUAL")
+    if (mode1 == "MANUAL"){
+        if (digitalRead(LIGHT1) == 1){
+            digitalWrite(LIGHT1,LOW);
+        }else if (digitalRead(LIGHT1) == 0){
+            digitalWrite(LIGHT1,HIGH);
+    }
     Serial.println("click!");
+    }
 }
 
 void click2() {
-    if (mode2 == "MANUAL")
+    if (mode2 == "MANUAL") {
+            if (digitalRead(LIGHT2) == 1){
+            digitalWrite(LIGHT2,LOW);
+        }else if (digitalRead(LIGHT2) == 0){
+            digitalWrite(LIGHT2,HIGH);
+    }
     Serial.println("click!");
+    }
+    
 }
 
 void click3() {
-    if (mode3 == "MANUAL")
+    if (mode3 == "MANUAL"){
+        if (digitalRead(LIGHT3) == 1){
+            digitalWrite(LIGHT3,LOW);
+        }else if (digitalRead(LIGHT3) == 0){
+            digitalWrite(LIGHT3,HIGH);
+    }
     Serial.println("click!");
+    }
 }
