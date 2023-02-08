@@ -3,6 +3,7 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include <WiFi.h>
+
 #define LIGHT1 26
 #define LIGHT2 25
 #define LIGHT3 33
@@ -10,6 +11,9 @@
 #define SWITCH1 0 //T0
 #define SWITCH2 2 //T1
 #define SWITCH3 15 //T2
+
+const int threshold =  40; 
+
 void Connect_Wifi(const char* ssid,const char* password){
     WiFi.begin(ssid, password);
     while (WiFi.status() != WL_CONNECTED) {
@@ -32,11 +36,35 @@ void setup() {
     pinMode(LIGHT3,OUTPUT);
     Connect_Wifi("OPPO_KUY","oppopass");
     xTaskCreatePinnedToCore(main_task, "main_task", 10000, NULL, 1, NULL, 0);
+    touchAttachInterrupt(T0, click1, threshold);
+    touchAttachInterrupt(T1, click2, threshold);
+    touchAttachInterrupt(T2, click3, threshold);
     
 }
 
+void loop() {    
+ Serial.println(touchRead(T0) );
+ delay(200);
 
+ Serial.println(touchRead(T1) );
+ delay(200);
 
-void loop() {
+ Serial.println(touchRead(T2) );
+ delay(200);
 
+}
+
+void click1() {
+    if (mode1 == "MANUAL")
+    Serial.println("click!");
+}
+
+void click2() {
+    if (mode2 == "MANUAL")
+    Serial.println("click!");
+}
+
+void click3() {
+    if (mode3 == "MANUAL")
+    Serial.println("click!");
 }
